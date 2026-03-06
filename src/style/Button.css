@@ -1,0 +1,18 @@
+.export-btn {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-weight: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.export-btn:hover {
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+}
+
+.btn-icon {
+  font-size: 16px;
+}

@@ -1,0 +1,195 @@
+/* Full page wrapper */
+.login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  position: relative;
+  background: #020617; /* ✅ your global background */
+  overflow: hidden;
+}
+
+/* Soft gradient glow background */
+.login-bg {
+  position: absolute;
+  inset: -220px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(18, 159, 130, 0.22), transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(255, 94, 0, 0.16), transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(61, 126, 255, 0.14), transparent 55%);
+}
+
+/* Login Card */
+.login-card {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  padding: 22px 22px 18px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+
+  color: #eaf0ff;
+}
+
+/* Brand header */
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.login-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+}
+
+.login-title {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.login-subtitle {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Headings */
+.login-heading {
+  font-weight: 800;
+  font-size: 22px;
+  margin: 6px 0 4px;
+}
+
+.login-desc {
+  margin: 0 0 14px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Labels */
+.login-label {
+  font-size: 13px;
+  opacity: 0.92;
+}
+
+/* Inputs (works with React-Bootstrap Form.Control) */
+.login-input {
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+
+  background: rgba(10, 16, 32, 0.55) !important;
+  color: #eaf0ff !important;
+  padding: 12px 12px !important;
+}
+
+.login-input::placeholder {
+  color: rgba(234, 240, 255, 0.55) !important;
+}
+
+.login-input:focus {
+  box-shadow: none !important;
+  border-color: rgba(18, 159, 130, 0.75) !important;
+}
+
+/* Password row + show/hide button */
+.login-password-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-eye {
+  position: absolute;
+  right: 10px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(234, 240, 255, 0.92);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login-eye:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Remember + forgot row */
+.login-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 14px;
+  gap: 10px;
+}
+
+.login-remember {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  opacity: 0.88;
+  user-select: none;
+}
+
+.login-remember input {
+  accent-color: #129f82;
+}
+
+/* Forgot password link button */
+.login-link {
+  border: 0;
+  background: transparent;
+  color: rgba(234, 240, 255, 0.92);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.login-btn {
+  border: 0 !important;
+  border-radius: 14px !important;
+  padding: 12px 14px !important;
+  font-weight: 900 !important;
+
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark)) !important;
+}
+
+.login-btn:disabled {
+  opacity: 0.75;
+}
+
+/* Footer */
+.login-foot {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+/* Mobile tweak */
+@media (max-width: 420px) {
+  .login-card {
+    padding: 18px 16px 14px;
+  }
+}

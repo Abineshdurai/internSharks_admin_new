@@ -1,0 +1,39 @@
+.admin-shell {
+  min-height: 100vh;
+  display: flex;
+  background: var(--color-background);
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-topbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-menu-btn {
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.admin-topbar-title {
+  font-weight: 700;
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--color-text-primary);
+}
+
+.admin-content {
+  padding: 16px;
+}

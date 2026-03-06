@@ -1,0 +1,200 @@
+.sb {
+  width: 35vh;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sb-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+}
+
+.sb-logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.sb-title {
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.sb-sub {
+  font-size: 20px;
+  padding-left: 7px;
+  color: var(--color-text-secondary);
+}
+
+.sb-close {
+  display: none;
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.sb-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+  
+}
+
+/* Responsive sizes */
+:root {
+  --sb-font: clamp(14px, 1.1vw, 18px);
+  --sb-icon: clamp(18px, 1.4vw, 24px);
+  --sb-gap: clamp(10px, 1vw, 14px);
+  --sb-pad-y: clamp(10px, 1vw, 14px);
+  --sb-pad-x: clamp(12px, 1vw, 16px);
+}
+
+/* Link row */
+.sb-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sb-gap);
+  text-decoration: none;
+  color: var(--color-text-primary);
+  opacity: 0.85;
+  padding: var(--sb-pad-y) var(--sb-pad-x);
+  border-radius: 12px;
+}
+
+
+
+/* default icon */
+.sb-link-icon {
+  width: var(--sb-icon);
+  height: var(--sb-icon);
+  color: rgba(255, 255, 255, 0.7); /* ✅ use color */
+  transition: color 0.2s ease;
+}
+
+/* active icon */
+.sb-link.active .sb-link-icon,
+.sb-link-icon.active-icon {
+  color: #ffffff;
+}
+
+.sb-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  opacity: 1;
+}
+
+.sb-link.active {
+  background: var(--color-primary);
+  height: 5vh;
+  opacity: 1;
+}
+
+/* Dot indicator (keep it a real dot) */
+.dot {
+  width: clamp(8px, 0.8vw, 12px);
+  height: clamp(8px, 0.8vw, 12px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  flex: 0 0 auto;
+  margin: 10px;
+}
+
+/* Label text responsive */
+.sb-label {
+  font-size: var(--sb-font);
+  font-weight: 600;
+  line-height: 20px; /* your Figma height */
+  white-space: nowrap;
+  color: var(--color-text-secondary)
+}
+
+.sb-lable-active {
+  color: var(--color-text-primary);
+}
+
+.sb-link.active .dot {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.sb-foot {
+  margin-top: auto;
+}
+
+.sb-logout {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.sb-logout:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* mobile behavior */
+.sb-overlay {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .sb {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-110%);
+    transition: transform 0.2s ease;
+    z-index: 1000;
+  }
+  .sb.open {
+    transform: translateX(0);
+  }
+  .sb-close {
+    display: inline-flex;
+  }
+  .sb-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 900;
+  }
+  .sb-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

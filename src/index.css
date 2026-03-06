@@ -1,13 +1,39 @@
-body {
+/* RESET */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ✅ Define variables globally */
+:root {
+  --color-background: #020617;
+  --color-background-secondary: #0F172A;
+  --color-surface: #0f172a;
+  --color-primary: #0DA6F2;
+  --color-primary-dark: #0a79b1;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #94A3B8;
+  /* --color-border: #1e293b; */
+  --color-border: #315668;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* FORCE DARK BACKGROUND */
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #020617 !important;
+  color: #ffffff;
+  
+}
+
+/* Remove default CRA App white */
+.App {
+  background-color: #020617 !important;
+}
+
+/* Remove bootstrap container background if any */
+.container,
+.container-fluid {
+  background-color: transparent !important;
 }
