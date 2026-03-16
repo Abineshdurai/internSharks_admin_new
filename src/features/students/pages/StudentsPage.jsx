@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FiEye, FiTrash2, FiSearch, FiDownload } from "react-icons/fi";
 import DataTable from "../../../components/common/table/DataTable";
@@ -9,6 +9,7 @@ import {
 } from "../studentSlice";
 import {
     useDeleteStudentMutation,
+    useGetStudentByIdMutation,
     useGetStudentsQuery,
 } from "../../../services/api/endPoints/student.endpoints";
 import "./StudentsPage.css";
@@ -16,9 +17,13 @@ import HStack from "../../../components/common/HStack";
 import SearchBar from "../../../components/common/searchBar/SearchBar";
 import { Button } from "react-bootstrap";
 import "../../../style/Button.css"
+import StudentDetailsPopup from "../components/StudentDetailsPopup";
 
 export default function StudentsPage() {
     const dispatch = useDispatch();
+    const [getStudentById] = useGetStudentByIdMutation();
+    const [selectedStudent, setSelectedStudent] = useState(null);
+    const [openPopUp, setOpenPopUp] = useState(false);
     const { searchText, currentPage, pageSize } = useSelector(
         (state) => state.students
     );
@@ -63,9 +68,17 @@ export default function StudentsPage() {
         total: 0,
     };
 
-    const handleView = (student) => {
-        dispatch(setSelectedStudent(student.raw));
-        console.log("View student:", student.raw);
+    const handleView = async (student) => {
+        // dispatch(setSelectedStudent(student.key));
+        // console.log("View student:", student.key);
+        try{
+            const res = await getStudentById(student.key).unwrap();
+            setSelectedStudent(res);
+            setOpenPopUp(true);
+            console.log("View student:", res);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     const handleDelete = async (student) => {
@@ -116,6 +129,7 @@ export default function StudentsPage() {
                     <button
                         className="action-btn view-btn"
                         onClick={() => handleView(row)}
+                        // onClick={ <StudentDetailsPopup/>}
                         title="View"
                         type="button"
                     >
@@ -172,6 +186,12 @@ export default function StudentsPage() {
                         pageSize={pageSize}
                         total={pagination.total}
                         onPageChange={(page) => dispatch(setCurrentPage(page))}
+                    />
+
+                    <StudentDetailsPopup 
+                    open={openPopUp}
+                    student={selectedStudent}
+                    onClose={() => setOpenPopUp(false)}
                     />
                 </>
             )}

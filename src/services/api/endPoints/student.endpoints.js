@@ -18,10 +18,20 @@ export const studentsApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["Students"],
         }),
+
+        getStudentById: builder.mutation({
+            query: (id) => ({
+                url: `/api/student/admin/getById`,
+                method: "POST",
+                body: { studentId: id }
+            }),
+            // providesTags: ["StudentById"],
+        }),
     }),
 });
 
 export const {
     useGetStudentsQuery,
-    useDeleteStudentMutation
+    useDeleteStudentMutation,
+    useGetStudentByIdMutation
 } = studentsApi;
