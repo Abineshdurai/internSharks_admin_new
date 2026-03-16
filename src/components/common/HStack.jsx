@@ -1,7 +1,7 @@
 export default function HStack({
     children,
     justify = "space-between",
-    align = 12,
+    align ,
     gap = 12,
     wrap = false,
     className = "",

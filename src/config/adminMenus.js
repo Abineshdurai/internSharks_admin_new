@@ -9,8 +9,26 @@ import { ReactComponent as AiSuccessRateIcon } from "../assets/icons/aiSuccessRa
 
 export const adminMenus = [
     { to: "/dashboard", label: "Dashboard", title: "Welcome Back", Icon: DashboardIcon },
-    { to: "/students", label: "Students", title: "Students Management", Icon: StudentsIcon },
-    { to: "/recruiters", label: "Recruiters", title: "Recruiters Management", Icon: RecruiterIcon },
+    {
+        label: "Students", title: "Students Management", Icon: StudentsIcon, children: [
+            {
+                to: "/students", label: "Students List",
+            },
+            {
+                to: "/students/payment", label: "Payment",
+            }
+        ]
+    },
+    {
+        label: "Recruiters", title: "Recruiters Management", Icon: RecruiterIcon, children: [
+            {
+                to: "/recruiters", label: "Recruiters List",
+            },
+            {
+                to: "/recruiters/payment", label: "Payment",
+            }
+        ]
+    },
     { to: "/internships", label: "Internships", title: "Internship Management", Icon: InternshipIcon },
     { to: "/applications", label: "Applications", title: "Applications Management", Icon: ApplicationsIcon },
     { to: "/aiSuccessRate", label: "AI-Success Rate", title: "AI-Success Rate Details", Icon: AiSuccessRateIcon },

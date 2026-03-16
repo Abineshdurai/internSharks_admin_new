@@ -6,6 +6,8 @@ import Adminlayout from "../layouts/AdminLayout";
 import DashboardPage from "../features/dashboard/pages/DashboardPage";
 import StudentsPage from "../features/students/pages/StudentsPage";
 import RecruiterPage from "../features/recruiters/pages/RecruiterPage";
+import StudentPaymentPage from "../features/students/pages/StudentPaymentPage";
+import RecruiterPaymentPage from "../features/recruiters/pages/RecruiterPaymentPage";
 
 export default function AppRoutes() {
   return (
@@ -16,7 +18,9 @@ export default function AppRoutes() {
         <Route element={<Adminlayout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/students" element={<StudentsPage />}/>
+          <Route path="/students/payment" element={<StudentPaymentPage />}/>
           <Route path="/recruiters" element={<RecruiterPage />}/>
+          <Route path="/recruiters/payment" element={<RecruiterPaymentPage />}/>
           
 
         </Route>

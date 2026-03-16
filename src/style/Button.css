@@ -1,18 +1,48 @@
-.export-btn {
+.btn.export-btn {
   background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
   border: none;
-  border-radius: 20px;
+  border-radius: 999px;
   padding: 10px 18px;
-  font-weight: 14px;
+  font-size: 14px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: white;
 }
 
-.export-btn:hover {
+/* tablet */
+@media (max-width: 768px) {
+  .btn.export-btn {
+    padding: 9px 16px;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .btn.export-btn .btn-icon {
+    font-size: 14px;
+  }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .btn.export-btn {
+    width: 35%;
+    height: 40px;
+    justify-content: center;
+    padding: 8px 14px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .btn.export-btn .btn-icon {
+    font-size: 13px;
+  }
+}
+
+.btn.export-btn:hover {
   background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
 }
 
-.btn-icon {
+/* .btn.export-btn .btn-icon {
   font-size: 16px;
-}
+} */
