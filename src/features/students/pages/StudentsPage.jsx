@@ -17,6 +17,8 @@ import HStack from "../../../components/common/HStack";
 import SearchBar from "../../../components/common/searchBar/SearchBar";
 import { Button } from "react-bootstrap";
 import "../../../style/Button.css"
+
+// import "../../../../index.css";
 import StudentDetailsPopup from "../components/StudentDetailsPopup";
 
 export default function StudentsPage() {
@@ -24,6 +26,7 @@ export default function StudentsPage() {
     const [getStudentById] = useGetStudentByIdMutation();
     const [selectedStudent, setSelectedStudent] = useState(null);
     const [openPopUp, setOpenPopUp] = useState(false);
+    const [loadingProfile, setLoadingProfile] = useState(false);
     const { searchText, currentPage, pageSize } = useSelector(
         (state) => state.students
     );
@@ -72,12 +75,15 @@ export default function StudentsPage() {
         // dispatch(setSelectedStudent(student.key));
         // console.log("View student:", student.key);
         try{
+            setLoadingProfile(true);
             const res = await getStudentById(student.key).unwrap();
             setSelectedStudent(res);
             setOpenPopUp(true);
             console.log("View student:", res);
         } catch (err) {
             console.error(err);
+        } finally {
+            setLoadingProfile(false);
         }
     };
 
@@ -188,11 +194,19 @@ export default function StudentsPage() {
                         onPageChange={(page) => dispatch(setCurrentPage(page))}
                     />
 
-                    <StudentDetailsPopup 
-                    open={openPopUp}
-                    student={selectedStudent}
-                    onClose={() => setOpenPopUp(false)}
-                    />
+                    {openPopUp && (
+                        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-center items-start overflow-y-auto p-4">
+                            <div className="w-full max-w-7xl mt-10">
+                                <StudentDetailsPopup
+                                    student={selectedStudent}
+                                    onClose={() => {
+                                        setOpenPopUp(false);
+                                        setSelectedStudent(null);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    )}
                 </>
             )}
         </div>

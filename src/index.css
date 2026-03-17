@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* RESET */
 * {
   margin: 0;
@@ -13,7 +17,7 @@
   --color-primary-dark: #0a79b1;
   --color-text-primary: #ffffff;
   --color-text-secondary: #94A3B8;
-  /* --color-border: #1e293b; */
+  --color-popup: #1E293B;
   --color-border: #315668;
   --color-cancel: #FB7185;
 }
@@ -38,3 +42,4 @@ body,
 .container-fluid {
   background-color: transparent !important;
 }
+
