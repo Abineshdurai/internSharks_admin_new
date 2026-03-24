@@ -20,6 +20,9 @@
   --color-popup: #1E293B;
   --color-border: #315668;
   --color-cancel: #FB7185;
+  --color-success: #86EFAC; /* success */
+  --color-warning: #FDBA74; /* pending */
+  --color-error: #F87171;   /* failed */
 }
 
 /* FORCE DARK BACKGROUND */

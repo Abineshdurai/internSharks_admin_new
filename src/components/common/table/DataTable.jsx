@@ -16,21 +16,22 @@ export default function DataTable({
 
 const getPages = () => {
   const pages = [];
+  const current = Number(currentPage);
 
   if (totalPages <= 5) {
     for (let i = 1; i <= totalPages; i++) pages.push(i);
   } else {
-    if (currentPage <= 3) {
-      pages.push(1, 2, 3, "...", totalPages);
-    } else if (currentPage >= totalPages - 2) {
-      pages.push(1, "...", totalPages - 2, totalPages - 1, totalPages);
+    if (current <= 3) {
+      pages.push(1, 2, 3, 4, "...", totalPages);
+    } else if (current >= totalPages - 2) {
+      pages.push(1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
     } else {
       pages.push(
         1,
         "...",
-        currentPage - 1,
-        currentPage,
-        currentPage + 1,
+        current - 1,
+        current,
+        current + 1,
         "...",
         totalPages
       );
@@ -72,24 +73,24 @@ const getPages = () => {
           ))
         )}
 
-       {total > 0 && (
+       {Number(total) > 0 && (
   <div className="dt-pagination">
 
     <button
       className="dt-page-btn"
-      onClick={() => onPageChange(currentPage - 1)}
-      disabled={currentPage === 1}
+      onClick={() => onPageChange(Number(currentPage) - 1)}
+      disabled={Number(currentPage) === 1}
     >
       ‹
     </button>
 
     {getPages().map((page, index) =>
       page === "..." ? (
-        <span key={index} className="dt-ellipsis">...</span>
+        <span key={`ellipsis-${index}`} className="dt-ellipsis">...</span>
       ) : (
         <button
-          key={page}
-          className={`dt-page-btn ${page === currentPage ? "active" : ""}`}
+          key={`page-${page}`}
+          className={`dt-page-btn ${page === Number(currentPage) ? "active" : ""}`}
           onClick={() => onPageChange(page)}
         >
           {page}
@@ -99,8 +100,8 @@ const getPages = () => {
 
     <button
       className="dt-page-btn"
-      onClick={() => onPageChange(currentPage + 1)}
-      disabled={currentPage === totalPages}
+      onClick={() => onPageChange(Number(currentPage) + 1)}
+      disabled={Number(currentPage) >= totalPages}
     >
       ›
     </button>

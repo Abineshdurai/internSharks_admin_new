@@ -14,7 +14,7 @@ export const studentsApi = baseApi.injectEndpoints({
         deleteStudent: builder.mutation({
             query: (id) => ({
                 url: `/api/admin/students/${id}`,
-                method: "DELETE,"
+                method: "DELETE"
             }),
             invalidatesTags: ["Students"],
         }),

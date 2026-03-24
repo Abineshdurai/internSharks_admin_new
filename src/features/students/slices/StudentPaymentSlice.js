@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const studentPaymentSlice = createSlice({
-    name: "student",
+    name: "studentPayment",
     initialState,
     reducers: {
         setSearchText: (state, action) => {

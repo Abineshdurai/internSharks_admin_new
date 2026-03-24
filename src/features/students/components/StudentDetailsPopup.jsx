@@ -1,90 +1,3 @@
-// import { useEffect } from "react";
-// import CommonModal from "../../../components/common/modal/commonModal/CommonModal";
-// import InfoCard from "../../../components/common/modal/infoCard/InfoCard";
-// import "../../../components/common/modal/infoCard/InfoGrid.css";
-// import { useGetStudentByIdMutation } from "../../../services/api/endPoints/student.endpoints";
-
-// export default function StudentDetailsPopup({ open, student, onClose }) {
-
-//   // useEffect(() => {
-//   //   if(open && studentId) {
-//   //     grtStudentById
-//   //   }
-//   // });
-//   if (!student) return null;
-
-//   const college = student.education?.college?.[0] || student.college?.[0];
-//   const skills = Array.isArray(student.studprogramminglang)
-//     ? student.studprogramminglang
-//     : [];
-
-//   return (
-//     <CommonModal
-//       open={open}
-//       onClose={onClose}
-//       title="Student Details"
-//       subtitle="Full student profile"
-//     >
-//       <div className="modal-grid">
-//         <InfoCard title="Personal Details">
-//           <div className="info-grid">
-//             <div className="info-item">
-//               <span className="info-label">Name</span>
-//               <span className="info-value">{student.studname || "-"}</span>
-//             </div>
-
-//             <div className="info-item">
-//               <span className="info-label">Email</span>
-//               <span className="info-value">{student.studemail || "-"}</span>
-//             </div>
-
-//             <div className="info-item">
-//               <span className="info-label">Phone</span>
-//               <span className="info-value">{student.studmobileno || "-"}</span>
-//             </div>
-
-//             <div className="info-item">
-//               <span className="info-label">Verified</span>
-//               <span className="info-value">{student.isVerified ? "Yes" : "No"}</span>
-//             </div>
-//           </div>
-//         </InfoCard>
-
-//         <InfoCard title="Education">
-//           <div className="info-grid">
-//             <div className="info-item">
-//               <span className="info-label">Degree</span>
-//               <span className="info-value">{college?.degree || "-"}</span>
-//             </div>
-
-//             <div className="info-item">
-//               <span className="info-label">Department</span>
-//               <span className="info-value">{college?.department || "-"}</span>
-//             </div>
-
-//             <div className="info-item">
-//               <span className="info-label">Start Year</span>
-//               <span className="info-value">{college?.start_year || "-"}</span>
-//             </div>
-
-//             <div className="info-item">
-//               <span className="info-label">End Year</span>
-//               <span className="info-value">{college?.end_year || "-"}</span>
-//             </div>
-//           </div>
-//         </InfoCard>
-
-//         <InfoCard title="Skills" full>
-//           <div className="info-value">
-//             {skills.length ? skills.join(", ") : "No skills available"}
-//           </div>
-//         </InfoCard>
-//       </div>
-//     </CommonModal>
-//   );
-// }
-
-
 import React, { useMemo, useState } from "react";
 import {
   Mail,
@@ -103,23 +16,31 @@ import {
 import { NormalizeStudentProfile } from "../../../utils/NormalizeStudentProfile";
 
 const SectionCard = ({ title, children, className = "" }) => (
-  <div className={`rounded-3xl bg-slate-800/90 border-slate-700 shadow-xl ${className}`}>
+  <div
+    className={`rounded-3xl bg-slate-800/90 border-slate-700 shadow-xl ${className}`}
+  >
     <div className="px-6 py-4 border-b border-slate-700">
-      <h3 className="text-white text-lg font-semibold tracking-wide">{title}</h3>
+      <h3 className="text-white text-lg font-semibold tracking-wide">
+        {title}
+      </h3>
     </div>
-    <div className="p-6">{children}</div>
+    <div className="px-4 pt-2 pb-1">{children}</div>
   </div>
 );
 
 const StatCard = ({ label, value, subtext, progress }) => (
-  <div className="rounded-3xl bg-slate-800/90 border-slate-700 p-5 min-h-[160px] shadow-lg">
+  <div className="rounded-3xl bg-slate-800/90 border-slate-700 p-3 min-h-[160px] shadow-lg">
     <div className="text-xs uppercase tracking-[0.18em] text-slate-400 font-semibold mb-4">
       {label}
     </div>
 
-    <div className="text-4xl font-bold text-white mb-2">{value}</div>
+    <div className="text-3xl font-bold text-white mb-2">{value}</div>
 
-    {subtext ? <p className="text-sm text-slate-400 mb-4">{subtext}</p> : <div className="h-6" />}
+    {subtext ? (
+      <p className="text-sm text-slate-400 mb-4">{subtext}</p>
+    ) : (
+      <div className="h-6" />
+    )}
 
     {typeof progress === "number" && (
       <div className="w-full h-2 rounded-full bg-slate-700 overflow-hidden">
@@ -136,8 +57,10 @@ const InfoRow = ({ icon, label, value, href }) => {
   if (!value || value === "N/A") return null;
 
   return (
-    <div className="mb-5 last:mb-0">
-      <div className="text-[11px] uppercase tracking-[0.2em] text-slate-400 mb-1">{label}</div>
+    <div className="mb-3 last:mb-0">
+      <div className="text-[11px] uppercase tracking-[0.2em] text-slate-400 mb-1">
+        {label}
+      </div>
       <div className="flex items-center gap-2 text-slate-100 break-all">
         <span className="text-slate-400">{icon}</span>
         {href ? (
@@ -181,19 +104,24 @@ const TimelineItem = ({ title, subtitle, timeline, description }) => (
     <div>
       <h4 className="text-white font-semibold text-base">{title}</h4>
       {subtitle ? <p className="text-cyan-400 mt-1">{subtitle}</p> : null}
-      {description ? <p className="text-slate-400 text-sm mt-2 leading-6">{description}</p> : null}
+      {description ? (
+        <p className="text-slate-400 text-sm mt-2 leading-6">{description}</p>
+      ) : null}
     </div>
-    <div className="text-slate-200 font-semibold md:text-right">{timeline || "N/A"}</div>
+    <div className="text-slate-200 font-semibold md:text-right">
+      {timeline || "N/A"}
+    </div>
   </div>
 );
 
 const DocumentsPanel = ({ profile }) => {
   const documents = [
-    profile.resume
-      ? { label: "Resume", url: profile.resume }
-      : null,
+    profile.resume ? { label: "Resume", url: profile.resume } : null,
     ...profile.aadhar.map((url, i) => ({ label: `Aadhar ${i + 1}`, url })),
-    ...profile.studentIdDocs.map((url, i) => ({ label: `Student ID ${i + 1}`, url })),
+    ...profile.studentIdDocs.map((url, i) => ({
+      label: `Student ID ${i + 1}`,
+      url,
+    })),
   ].filter(Boolean);
 
   if (!documents.length && !profile.certificates.length) {
@@ -227,16 +155,22 @@ const DocumentsPanel = ({ profile }) => {
 
       {profile.certificates.length > 0 && (
         <div>
-          <h4 className="text-white font-semibold mb-3">Certificates / Achievements</h4>
+          <h4 className="text-white font-semibold mb-3">
+            Certificates / Achievements
+          </h4>
           <div className="space-y-3">
             {profile.certificates.map((cert, idx) => (
               <div
                 key={cert?._id || idx}
                 className="rounded-2xl border-slate-700 bg-slate-900/60 px-4 py-4"
               >
-                <p className="text-slate-100 font-medium">{cert?.name || "Untitled certificate"}</p>
+                <p className="text-slate-100 font-medium">
+                  {cert?.name || "Untitled certificate"}
+                </p>
                 <div className="text-sm text-slate-400 mt-1">
-                  {cert?.issuer ? `Issuer: ${cert.issuer}` : "Issuer not specified"}
+                  {cert?.issuer
+                    ? `Issuer: ${cert.issuer}`
+                    : "Issuer not specified"}
                   {cert?.date ? ` • Date: ${cert.date}` : ""}
                 </div>
               </div>
@@ -270,18 +204,22 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
           //   profile.banner
           //     ? `linear-gradient(to right, rgba(10,15,25,.86), rgba(17,24,39,.92)), url(${profile.banner}) center/cover`
           //     : "linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #0f172a 100%)",
-          background: "var(--color-popup)"
+          background: "var(--color-popup)",
         }}
-       >
+      >
         <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between">
           <div className="flex flex-col sm:flex-row gap-5">
             <div className="relative shrink-0">
               <img
-                src={profile.profileImage || "https://via.placeholder.com/140x140?text=Profile"}
+                src={
+                  profile.profileImage ||
+                  "https://via.placeholder.com/140x140?text=Profile"
+                }
                 alt={profile.name}
                 className="w-32 h-32 rounded-3xl object-cover border-4 border-white/10 shadow-xl bg-slate-800"
                 onError={(e) => {
-                  e.currentTarget.src = "https://via.placeholder.com/140x140?text=Profile";
+                  e.currentTarget.src =
+                    "https://via.placeholder.com/140x140?text=Profile";
                 }}
               />
               <span className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-900" />
@@ -289,7 +227,9 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
 
             <div className="pt-1">
               <div className="flex flex-wrap items-center gap-3">
-                <h1 className="text-3xl font-bold text-white">{profile.name}</h1>
+                <h1 className="text-3xl font-bold text-white">
+                  {profile.name}
+                </h1>
                 {profile.verified && (
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-cyan-500/15 border-cyan-400/20 text-cyan-300 text-sm font-medium">
                     <BadgeCheck size={14} />
@@ -343,11 +283,19 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
         </div>
       </div>
 
-      <div className="p-7 lg:p-7 px-2 grid grid-cols-1 xl:grid-cols-[320px_minmax(0,1fr)] gap-4 bg-transparent">
-        <div className="space-y-6">
+      <div className="p-4 lg:p-4 px-2 grid grid-cols-1 xl:grid-cols-[320px_minmax(0,1fr)] gap-3 bg-transparent">
+        <div className="space-y-4">
           <SectionCard title="Personal Details">
-            <InfoRow icon={<Mail size={16} />} label="Email Address" value={profile.email} />
-            <InfoRow icon={<Phone size={16} />} label="Phone Number" value={profile.phone} />
+            <InfoRow
+              icon={<Mail size={16} />}
+              label="Email Address"
+              value={profile.email}
+            />
+            <InfoRow
+              icon={<Phone size={16} />}
+              label="Phone Number"
+              value={profile.phone}
+            />
             <InfoRow
               icon={<Linkedin size={16} />}
               label="LinkedIn"
@@ -356,21 +304,27 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
             />
           </SectionCard>
 
-          <div className="rounded-3xl bg-cyan-500 p-6 shadow-[0_0_40px_rgba(6,182,212,0.25)]">
+          <div className="rounded-3xl bg-cyan-500 p-3 shadow-[0_0_40px_rgba(6,182,212,0.25)]">
             <div className="text-sm uppercase tracking-[0.18em] text-cyan-100 font-semibold mb-3">
               Credit Status
             </div>
 
             <div className="flex items-end justify-between">
               <div>
-                <div className="text-cyan-100 text-sm mb-1">Available Balance</div>
-                <div className="text-5xl font-bold text-white">{profile.credits.balance}</div>
+                <div className="text-cyan-100 text-sm mb-1">
+                  Available Balance
+                </div>
+                <div className="text-5xl font-bold text-white">
+                  {profile.credits.balance}
+                </div>
                 <div className="text-cyan-50">Credits</div>
               </div>
 
               <div className="text-right">
                 <div className="text-cyan-100 text-sm mb-1">Used</div>
-                <div className="text-3xl font-bold text-white">{profile.credits.used}</div>
+                <div className="text-3xl font-bold text-white">
+                  {profile.credits.used}
+                </div>
               </div>
             </div>
 
@@ -378,12 +332,13 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
               <div
                 className="h-full bg-white"
                 style={{
-                  width: `${profile.credits.balance + profile.credits.used > 0
+                  width: `${
+                    profile.credits.balance + profile.credits.used > 0
                       ? (profile.credits.balance /
-                        (profile.credits.balance + profile.credits.used)) *
-                      100
+                          (profile.credits.balance + profile.credits.used)) *
+                        100
                       : 0
-                    }%`,
+                  }%`,
                 }}
               />
             </div>
@@ -394,7 +349,10 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
           </SectionCard>
 
           <SectionCard title="Areas of Interest">
-            <BadgeList items={profile.interests} emptyText="No interests added." />
+            <BadgeList
+              items={profile.interests}
+              emptyText="No interests added."
+            />
           </SectionCard>
         </div>
 
@@ -404,10 +362,11 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`px-6 py-3 rounded-2xl font-semibold transition ${activeTab === tab.key
+                className={`px-6 py-3 rounded-2xl font-semibold transition ${
+                  activeTab === tab.key
                     ? "bg-cyan-500 text-white shadow-lg"
                     : "text-slate-400 hover:text-white hover:bg-slate-700"
-                  }`}
+                }`}
               >
                 {tab.label}
               </button>
@@ -430,7 +389,11 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
                 />
                 <StatCard
                   label="Avg. Assessment Score"
-                  value={profile.stats.assessmentScore ? `${profile.stats.assessmentScore}/100` : "N/A"}
+                  value={
+                    profile.stats.assessmentScore
+                      ? `${profile.stats.assessmentScore}/100`
+                      : "N/A"
+                  }
                   subtext="Assessment score missing in current response"
                 />
               </div>
@@ -447,7 +410,9 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
                     />
                   ))
                 ) : (
-                  <p className="text-slate-400">No internship details available.</p>
+                  <p className="text-slate-400">
+                    No internship details available.
+                  </p>
                 )}
               </SectionCard>
 
@@ -478,7 +443,9 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
                       key={project?._id || idx}
                       className="rounded-2xl border-slate-700 bg-slate-900/60 p-5"
                     >
-                      <h4 className="text-white font-semibold text-lg mb-2">{project?.title || "Untitled Project"}</h4>
+                      <h4 className="text-white font-semibold text-lg mb-2">
+                        {project?.title || "Untitled Project"}
+                      </h4>
                       {Array.isArray(project?.description) ? (
                         <ul className="space-y-2 text-slate-300 text-sm leading-6">
                           {project.description.map((desc, i) => (
@@ -513,15 +480,23 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
                     />
                   ))
                 ) : (
-                  <p className="text-slate-400">No college education details.</p>
+                  <p className="text-slate-400">
+                    No college education details.
+                  </p>
                 )}
               </SectionCard>
 
               <SectionCard title="Higher Secondary">
                 <TimelineItem
-                  title={profile.education.higherSecondary?.board || "Not specified"}
-                  subtitle={profile.education.higherSecondary?.institution || ""}
-                  timeline={profile.education.higherSecondary?.year_of_passing || "N/A"}
+                  title={
+                    profile.education.higherSecondary?.board || "Not specified"
+                  }
+                  subtitle={
+                    profile.education.higherSecondary?.institution || ""
+                  }
+                  timeline={
+                    profile.education.higherSecondary?.year_of_passing || "N/A"
+                  }
                   description={`Percentage: ${profile.education.higherSecondary?.percentage || "N/A"}`}
                 />
               </SectionCard>
@@ -534,7 +509,9 @@ const StudentDetailsPopup = ({ student, onClose, onMessage }) => {
                     "Not specified"
                   }
                   subtitle={profile.education.secondary?.board || ""}
-                  timeline={profile.education.secondary?.year_of_passing || "N/A"}
+                  timeline={
+                    profile.education.secondary?.year_of_passing || "N/A"
+                  }
                   description={`Percentage: ${profile.education.secondary?.percentage || "N/A"}`}
                 />
               </SectionCard>

@@ -40,7 +40,7 @@ export default function StudentsPage() {
     const [deleteStudent] = useDeleteStudentMutation();
 
     const students = useMemo(() => {
-        const rawStudents = data?.data?.students || [];
+        const rawStudents = data?.students || data?.data?.students || [];
 
         return rawStudents.map((student) => ({
             key: student._id,
@@ -65,10 +65,10 @@ export default function StudentsPage() {
         }));
     }, [data]);
 
-    const pagination = data?.data?.pagination || {
-        current: 1,
-        pageSize: 10,
-        total: 0,
+    const pagination = {
+        current: data?.currentPage ?? data?.data?.pagination?.current ?? 1,
+        pageSize: data?.limit ?? data?.data?.pagination?.pageSize ?? 10,
+        total: data?.totalRecords ?? data?.data?.pagination?.total ?? 0,
     };
 
     const handleView = async (student) => {
