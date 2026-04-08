@@ -8,6 +8,9 @@ import StudentsPage from "../features/students/pages/StudentsPage";
 import RecruiterPage from "../features/recruiters/pages/RecruiterPage";
 import StudentPaymentPage from "../features/students/pages/StudentPaymentPage";
 import RecruiterPaymentPage from "../features/recruiters/pages/RecruiterPaymentPage";
+import InternshipPage from "../features/internships/pages/InternshipPage";
+import ApplicationPage from "../features/applications/pages/ApplicationPage";
+import AIPages from "../features/ai/pages/AIPages";
 
 export default function AppRoutes() {
   return (
@@ -21,7 +24,9 @@ export default function AppRoutes() {
           <Route path="/students/payment" element={<StudentPaymentPage />}/>
           <Route path="/recruiters" element={<RecruiterPage />}/>
           <Route path="/recruiters/payment" element={<RecruiterPaymentPage />}/>
-          
+          <Route path="/internships" element={<InternshipPage />}/>
+          <Route path="/applications" element={<ApplicationPage />}/>
+          <Route path="/aiSuccessRate" element={<AIPages />}/>
 
         </Route>
 

@@ -49,7 +49,7 @@ const getPages = () => {
           style={{ gridTemplateColumns }}
         >
           {columns.map((col) => (
-            <div key={col.key} className="dt-cell dt-head-cell">
+            <div key={col.key} className="dt-cell dt-head-cell" style={{ textAlign: col.align || "left" }}>
               {col.title}
             </div>
           ))}
@@ -65,7 +65,7 @@ const getPages = () => {
               style={{ gridTemplateColumns }}
             >
               {columns.map((col) => (
-                <div key={col.key} className="dt-cell">
+                <div key={col.key} className="dt-cell" style={{ textAlign: col.align || "left" }}>
                   {col.render ? col.render(item[col.key], item, index) : item[col.key]}
                 </div>
               ))}

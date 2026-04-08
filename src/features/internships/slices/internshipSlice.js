@@ -1,0 +1,32 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+    searchText: "",
+    currentPage: 1,
+    pageSize: 10,
+}
+
+const internshipSlice = createSlice({
+    name: "internships",
+    initialState,
+    reducers: {
+        setSearchText: (state, action) => {
+            state.searchText = action.payload;
+            state.currentPage = 1;
+        },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        },
+        setPageSize: (state, action) => {
+            state.pageSize = action.payload;
+            state.currentPage = 1;
+        },
+    },
+})
+
+export const { 
+    setSearchText, 
+    setCurrentPage, 
+    setPageSize 
+} = internshipSlice.actions;
+export default internshipSlice.reducer;
