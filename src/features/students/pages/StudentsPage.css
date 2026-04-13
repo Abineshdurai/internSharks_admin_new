@@ -72,6 +72,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  /* padding: 2px; */
+  /* margin: 1px; */
 }
 
 .action-btn {
@@ -94,6 +96,11 @@
 .delete-btn {
   background: rgba(239, 68, 68, 0.14);
   color: #f87171;
+}
+
+.edit-btn {
+  background: rgba(74, 239, 68, 0.14);
+  color: var(--color-success);
 }
 
 .students-pagination {

@@ -32,6 +32,7 @@ export default function Adminlayout() {
                         ☰
                     </button>
                     <div className="admin-topbar-title"> {pageTitle}</div>
+                    <div id="admin-header-actions" className="admin-header-actions"></div>
                 </header>
                 <main className="admin-content">
                     <Outlet/>

@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { setCurrentPage, setSearchText } from "../slices/internshipSlice";
 import DataTable from "../../../components/common/table/DataTable";
 import SearchBar from "../../../components/common/searchBar/SearchBar";
-import { FiDownload } from "react-icons/fi";
+import { FiDownload, FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
 
 export default function InternshipPage() {
   const dispatch = useDispatch();
@@ -45,52 +45,96 @@ export default function InternshipPage() {
   }
 
   const columns = [
-    {key: "internshipTitle", title: "Internship Title", width: "1.5fr", align: "center"},
-    {key: "companyName", title: "Company Name", width: "1.5fr", align: "center"},
-    {key: "location", title: "Location", width: "1.5fr", align: "center"},
-    {key: "internshipDuration", title: "Internship Duration", width: "1.5fr", align: "center"},
-    {key: "stipend", title: "Stipend", width: "1fr", align: "center"},
-    {key: "postedAt", title: "Posted At", width: "1.5fr", align: "center"},
+    {
+      key: "internshipTitle",
+      title: "Internship Title",
+      width: "1.5fr",
+      align: "center",
+    },
+    {
+      key: "companyName",
+      title: "Company Name",
+      width: "1.5fr",
+      align: "center",
+    },
+    { key: "location", title: "Location", width: "1.5fr", align: "center" },
+    {
+      key: "internshipDuration",
+      title: "Internship Duration",
+      width: "1.5fr",
+      align: "center",
+    },
+    { key: "stipend", title: "Stipend", width: "1fr", align: "center" },
+    { key: "postedAt", title: "Posted At", width: "1.5fr", align: "center" },
     {
       key: "actions",
       title: "Actions",
       align: "center",
       render: (_, row) => (
-        <HStack gap={8} justify="center">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => handleView(row.id)}
-            className="action-btn"
-            style={{color: "grey"}}
-            hover={{color: "white"}}
+        // <HStack gap={8} justify="center">
+        //   <Button
+        //     variant="outline"
+        //     size="sm"
+        //     onClick={() => handleView(row.id)}
+        //     className="action-btn"
+        //     style={{color: "grey"}}
+        //     hover={{color: "white"}}
+        //   >
+        //     <Eye size={16} />
+        //   </Button>
+        //   <Button
+        //     variant="outline"
+        //     size="sm"
+        //     onClick={() => handleEdit(row.id)}
+        //     className="action-btn"
+        //     style={{color: "blue"}}
+        //     hover={{color: "white"}}
+        //   >
+        //     <Pencil size={16} />
+        //   </Button>
+        //   <Button
+        //     variant="outline"
+        //     size="sm"
+        //     onClick={() => handleDelete(row.id)}
+        //     className="action-btn"
+        //     style={{color: "red"}}
+        //     hover={{color: "white"}}
+        //   >
+        //     <Trash2 size={16} />
+        //   </Button>
+        // </HStack>
+        <div className="student-actions pl-6">
+          <button
+            className="action-btn view-btn"
+            onClick={() => handleView(row)}
+            // onClick={ <StudentDetailsPopup/>}
+            title="View"
+            type="button"
           >
-            <Eye size={16} />
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => handleEdit(row.id)}
-            className="action-btn"
-            style={{color: "blue"}}
-            hover={{color: "white"}}
+            <FiEye />
+          </button>
+
+          {/* <button
+                              className="action-btn edit-btn"
+                              onClick={() => handleEdit(row)}
+                              title="Edit"
+                              type="button"
+                          >
+                              <FiEdit />
+                          </button> */}
+
+          <button
+            className="action-btn delete-btn"
+            onClick={() => handleDelete(row)}
+            title="Delete"
+            type="button"
           >
-            <Pencil size={16} />
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => handleDelete(row.id)}
-            className="action-btn"
-            style={{color: "red"}}
-            hover={{color: "white"}}
-          >
-            <Trash2 size={16} />
-          </Button>
-        </HStack>
+            <FiTrash2 />
+          </button>
+        </div>
       ),
     },
-  ]
+  ];
 
   const handleView = (id) => {
     console.log("View internship:", id);

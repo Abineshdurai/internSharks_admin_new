@@ -37,3 +37,10 @@
 .admin-content {
   padding: 16px;
 }
+
+.admin-header-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

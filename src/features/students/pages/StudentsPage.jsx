@@ -100,10 +100,10 @@ export default function StudentsPage() {
 
     const columns = [
         // { key: "id", title: "ID", width: "0.8fr" },
-        { key: "name", title: "Student Name", width: "1.4fr" },
-        { key: "email", title: "Email", width: "1.8fr" },
-        { key: "phone", title: "Phone", width: "1.2fr" },
-        { key: "college", title: "College", width: "1.5fr" },
+        { key: "name", title: "Student Name", width: "1.4fr", align: "center" },
+        { key: "email", title: "Email", width: "1.8fr", align: "center" },
+        { key: "phone", title: "Phone", width: "1.2fr", align: "center" },
+        { key: "college", title: "College", width: "1.5fr",align: "center" },
         // {
         //     key: "skills",
         //     title: "Skills",
@@ -125,13 +125,14 @@ export default function StudentsPage() {
         //         </div>
         //     ),
         // },
-        { key: "degree", title: "Degree", width: "2fr" },
+        { key: "degree", title: "Degree", width: "2fr", align: "center" },
         {
             key: "actions",
             title: "Actions",
             width: "1fr",
+            align: "center",
             render: (_, row) => (
-                <div className="student-actions">
+                <div className="student-actions pl-6">
                     <button
                         className="action-btn view-btn"
                         onClick={() => handleView(row)}

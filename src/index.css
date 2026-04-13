@@ -23,6 +23,10 @@
   --color-success: #86EFAC; /* success */
   --color-warning: #FDBA74; /* pending */
   --color-error: #F87171;   /* failed */
+  --color-student-gradient: linear-gradient(135deg, #0DA6F2, #93C5FD);
+  --color-recruiter-gradient: linear-gradient(135deg, #60A5FA, #818CF8);
+  --color-job-gradient: linear-gradient(135deg, #A78BFA, #C084FC);
+  --color-application-gradient: linear-gradient(135deg, #22D3EE, #2DD4BF);
 }
 
 /* FORCE DARK BACKGROUND */
