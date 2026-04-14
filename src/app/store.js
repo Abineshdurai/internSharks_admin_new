@@ -7,6 +7,7 @@ import recruiterReducer from "../features/recruiters/slices/recruiterSlice"
 import recruiterPaymentReducer from "../features/recruiters/slices/recruiterPaymentSlice"
 import internshipReducer from "../features/internships/slices/internshipSlice"
 import aiReducer from "../features/ai/slice/aiSlice"
+import applicationReducer from "../features/applications/slice/applicationSlice"
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -16,6 +17,7 @@ export const store = configureStore({
     recruiterPayment: recruiterPaymentReducer,
     internships: internshipReducer,
     ai: aiReducer,
+    application: applicationReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { setSearchText } from "../../students/studentSlice"
 
 const initialState = {
     searchText : "",
